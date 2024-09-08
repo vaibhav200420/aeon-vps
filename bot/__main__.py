@@ -147,8 +147,6 @@ async def stats(_, message):
     await one_minute_del(reply_message)
 
 
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
 @new_thread
 async def start(client, message):
     if len(message.command) > 1 and message.command[1] == "private":
@@ -189,22 +187,12 @@ async def start(client, message):
         return await sendMessage(message, msg)
     elif await CustomFilters.authorized(client, message):
         help_command = f"/{BotCommands.HelpCommand}"
-        start_string = (
-            f"This bot can mirror all your links|files|torrents to Google Drive or any rclone cloud or to telegram.\n"
-            f"<b>Type {help_command} to get a list of available commands</b>"
-        )
-        # Creating inline keyboard with buttons and links
-        buttons = [
-            [InlineKeyboardButton("Use Me", url="https://example.com/use_me")],  # Add your link here
-            [InlineKeyboardButton("Owner", url="https://example.com/owner")]    # Add your link here
-        ]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        await sendMessage(message, start_string, reply_markup=reply_markup, photo="Random")
+        start_string = f"This bot can mirror all your links|files|torrents to Google Drive or any rclone cloud or to telegram. @AJxMirror_Leech_bot_01\n<b>Type {help_command} to get a list of available commands</b>"
+        await sendMessage(message, start_string, photo="Random")
     else:
-        await sendMessage(message, "You are not an authorized user!", photo="Random")
+        await sendMessage(message, "You are not a authorized user!", photo="Random")
     await DbManager().update_pm_users(message.from_user.id)
     return None
-
 
 
 async def restart(_, message):
