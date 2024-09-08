@@ -249,7 +249,7 @@ def source(self):
 
 
 def get_readable_message():
-    msg = "<b>Powered by GarudaMirror</b>\n\n"
+    msg = "<a href='https://t.me/AJxMirror_Leech_bot_01'>Powered by AjxMirror</a>\n\n"
     button = None
     tasks = len(download_dict)
     currentTime = get_readable_time(time() - botStartTime)
